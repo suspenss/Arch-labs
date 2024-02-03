@@ -1,0 +1,13 @@
+Q1:
+    1-bit-multiplexer: and-gate * 2 + not-gate * 1 + or-gate * 1 = 5
+    5-big-multiplexer: 5 * 5 = 25
+    n-bit-multiplexer: n * 5
+
+Q2:
+    8-bit-ripple-carry adder: 5 * 8 = 40
+    8-bit-carry-select adder: 3 * (4-bit adder) + (1-bit-mux) + (4-bit-mux) = 60 + 5 + 20 = 85
+
+Q3:
+    8-bit-ripple-carry adder: 8 * A 
+    8-bit-carry-select adder: 4 * A + M (I think the multiplexer and adder will compute in parallel)
+

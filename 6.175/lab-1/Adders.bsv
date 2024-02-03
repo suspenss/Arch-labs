@@ -20,7 +20,7 @@ endfunction
 
 // Exercise 4
 function Bit#(5) add4(Bit#(4) a, Bit#(4) b, Bit#(1) c0);
-
+    return addN(a, b, c0);
 endfunction
 
 interface Adder8;
@@ -38,6 +38,11 @@ endmodule
 // Exercise 5
 module mkCSAdder(Adder8);
     method ActionValue#(Bit#(9)) sum(Bit#(8) a,Bit#(8) b,Bit#(1) c_in);
-
+        let low = add4(a[3:0], b[3:0], c_in);
+        let c_as_1 = add4(a[7:4], b[7:4], 1);
+        let c_as_0 = add4(a[7:4], b[7:4], 0);
+        let high_s = multiplexer_n(low[4], c_as_0[3:0], c_as_1[3:0]);
+        let high_c = multiplexer_n(low[4], c_as_0[4], c_as_1[4]);
+        return {high_c, high_s, low[3:0]};
     endmethod
 endmodule
